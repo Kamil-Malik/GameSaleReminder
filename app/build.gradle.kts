@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.junit.get5().adapter)
 }
 
 android {
@@ -58,6 +59,9 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
 
+    //  Coil
+    implementation(libs.coil)
+
     //  Compose Activity
     implementation(libs.compose.activity)
 
@@ -71,11 +75,37 @@ dependencies {
     implementation(libs.compose.ui.graphic)
     implementation(libs.compose.ui.tooling)
     implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.icon)
+    implementation(libs.compose.font)
+
+    //  Coroutine
+    implementation(libs.coroutine)
 
     //  Hilt
     implementation(libs.hilt)
     implementation(libs.hilt.compose)
     ksp(libs.hilt.compiler)
+
+    //  Logging Interceptor
+    implementation(libs.logging.interceptor)
+
+    //  Navigation
+    implementation(libs.navigation)
+
+    //  Paging
+    implementation(libs.paging)
+    implementation(libs.paging.compose)
+
+    //  Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.moshi)
+    implementation(libs.moshi)
+    ksp(libs.moshi.codegen)
+
+    //  Room
+    implementation(libs.room)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
     //  Ui Test
     androidTestImplementation(libs.ui.test.espresso.core)
@@ -83,6 +113,21 @@ dependencies {
     androidTestImplementation(libs.ui.test.compose.junit)
     androidTestImplementation(libs.ui.test.compose.manifest)
 
-    //  Unit Test
-    testImplementation(libs.test.junit)
+    //  ViewModel
+    implementation(libs.lifecycle.ktx)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.lifecycle.viewmodel.compose)
+
+/*============================ Testing =====================================*/
+    // (Required) Writing and executing Unit Tests on the JUnit Platform
+    testImplementation(libs.junit.get5())
+    testRuntimeOnly(libs.junit.get5().engine)
+
+    // (Optional) If you need "Parameterized Tests"
+    testImplementation(libs.junit.get5().parameterized)
+
+    // (Optional) If you also have JUnit 4-based tests
+    testImplementation(libs.test.junit.get4())
+    testRuntimeOnly(libs.junit.get5().vintage.engine)
+/*============================================================================*/
 }

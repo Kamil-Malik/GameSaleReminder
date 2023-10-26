@@ -11,7 +11,7 @@ coil = "2.4.0"
 coroutine = "1.7.3"
 
 #   Gradle
-android-gradle-plugin = "8.3.0-alpha09"
+android-gradle-plugin = "8.2.0-rc01"
 
 #   Hilt
 hilt = "2.47"
@@ -48,12 +48,17 @@ paging-compose = "3.2.1"
 #   Retrofit
 retrofit = "2.9.0"
 
+#   Room
+room = "2.6.0"
+
 # Ui Test
 ui-test-espresso-core = "3.5.1"
 ui-test-android-junit = "1.1.5"
 
 #   unit Test
 test-junit = "4.13.2"
+test-junit-5 = "5.9.3"
+test-junit-5-adapter = "1.9.3.0"
 
 #   Timber
 timber = "5.0.1"
@@ -74,6 +79,7 @@ coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 #   Compose
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+compose-font = { group = "androidx.compose.ui", name = "ui-text-google-fonts" }
 compose-icon = { group = "androidx.compose.material", name = "material-icons-extended" }
 compose-material-design = { group = "androidx.compose.material3", name = "material3" }
 compose-ui = { group = "androidx.compose.ui", name = "ui" }
@@ -115,6 +121,11 @@ paging-test = { group = "androidx.paging", name = "paging-common", version.ref =
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 
+#   Room
+room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+
 #   Ui Test
 ui-test-android-junit = { group = "androidx.test.ext", name = "junit", version.ref = "ui-test-android-junit" }
 ui-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "ui-test-espresso-core" }
@@ -122,7 +133,7 @@ ui-test-compose-junit = { group = "androidx.compose.ui", name = "ui-test-junit4"
 ui-test-compose-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 
 #   Unit Test
-test-junit = { group = "junit", name = "junit", version.ref = "test-junit" }
+test-junit-4 = { group = "junit", name = "junit", version.ref = "test-junit" }
 
 #   Viewmodel
 lifecycle-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
@@ -137,6 +148,13 @@ worker = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "wo
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
+#===========================TESTING===================================#
+junit-5 = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "test-junit-5" }
+junit-5-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "test-junit-5" }
+junit-5-vintage-engine = { group = "org.junit.jupiter", name = "junit-vintage-engine", version.ref = "test-junit-5" }
+junit-5-parameterized = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "test-junit-5" }
+#=====================================================================#
+
 [plugins]
 
 #   Android
@@ -145,6 +163,9 @@ android-library = { id = "com.android.library", version.ref = "android-gradle-pl
 
 #   Hilt
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+#   Junit 5 Adapter
+junit-5-adapter = { id = "de.mannodermaus.android-junit5", version.ref = "test-junit-5-adapter" }
 
 #   Kapt
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kapt" }
