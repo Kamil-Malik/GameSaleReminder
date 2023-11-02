@@ -3,6 +3,7 @@ package com.lelestacia.gamediscountreminder.ui.component
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -21,16 +23,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.lelestacia.gamediscountreminder.data.source.remote.dto.deal.GameDealDto
+import com.lelestacia.gamediscountreminder.data.source.remote.dto.deal.DealDto
 import com.lelestacia.gamediscountreminder.domain.model.Price
-import com.lelestacia.gamediscountreminder.ui.theme.GameDiscountReminderTheme
+import com.lelestacia.gamediscountreminder.ui.theme.CardBackgroundColor
+import com.lelestacia.gamediscountreminder.ui.theme.GameSaleReminderTheme
 import com.lelestacia.gamediscountreminder.ui.theme.fontFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GameDealCardItem(
-    deal: GameDealDto,
-    onClicked: (GameDealDto) -> Unit
+    deal: DealDto,
+    onClicked: (DealDto) -> Unit
 ) {
 
     val onCardClicked: () -> Unit = {
@@ -40,7 +43,7 @@ fun GameDealCardItem(
     Card(
         shape = RoundedCornerShape(4.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.Gray
+            containerColor = CardBackgroundColor
         ),
         onClick = onCardClicked,
         modifier = Modifier.fillMaxWidth()
@@ -62,18 +65,26 @@ fun GameDealCardItem(
                     text = deal.title,
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontFamily = fontFamily,
-                        fontWeight = FontWeight.Black
+                        fontWeight = FontWeight.Medium,
+                        color = Color.White
                     ),
                     textAlign = TextAlign.Start,
                     modifier = Modifier.fillMaxWidth(),
                 )
-                PriceCard(
-                    price = Price(
-                        normal = deal.normalPrice,
-                        sale = deal.salePrice,
-                        savings = deal.savings
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    PriceCard(
+                        price = Price(
+                            normal = deal.normalPrice,
+                            sale = deal.salePrice,
+                            savings = deal.savings
+                        )
                     )
-                )
+                    MetaCriticScoreBadge(score = deal.metacriticScore.toInt())
+                }
             }
         }
     }
@@ -82,10 +93,10 @@ fun GameDealCardItem(
 @Preview
 @Composable
 fun PreviewDealsCardItem() {
-    GameDiscountReminderTheme {
+    GameSaleReminderTheme {
         Surface {
             GameDealCardItem(
-                deal = GameDealDto(
+                deal = DealDto(
                     dealID = "CoyryML0LMR039mrHIRiquMVW%2FpRm6zbecdtqhyL1L0%3D",
                     dealRating = "9.4",
                     gameID = "109696",

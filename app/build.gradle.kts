@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.junit.get5().adapter)
+    alias(libs.plugins.firebase)
+    alias(libs.plugins.firebase.crashlytic)
 }
 
 android {
@@ -33,19 +35,25 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         compose = true
+        buildConfig = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -81,6 +89,10 @@ dependencies {
     //  Coroutine
     implementation(libs.coroutine)
 
+    //  Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytic)
+
     //  Hilt
     implementation(libs.hilt)
     implementation(libs.hilt.compose)
@@ -107,6 +119,9 @@ dependencies {
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
+    //  Timber
+    implementation(libs.timber)
+
     //  Ui Test
     androidTestImplementation(libs.ui.test.espresso.core)
     androidTestImplementation(libs.ui.test.android.junit)
@@ -118,7 +133,7 @@ dependencies {
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.lifecycle.viewmodel.compose)
 
-/*============================ Testing =====================================*/
+    /*============================ Testing ==============================*/
     // (Required) Writing and executing Unit Tests on the JUnit Platform
     testImplementation(libs.junit.get5())
     testRuntimeOnly(libs.junit.get5().engine)
@@ -129,5 +144,5 @@ dependencies {
     // (Optional) If you also have JUnit 4-based tests
     testImplementation(libs.test.junit.get4())
     testRuntimeOnly(libs.junit.get5().vintage.engine)
-/*============================================================================*/
+    /*====================================================================*/
 }

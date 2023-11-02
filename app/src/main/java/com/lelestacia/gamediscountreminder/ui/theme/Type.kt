@@ -15,6 +15,10 @@ val provider = GoogleFont.Provider(
     certificates = R.array.com_google_android_gms_fonts_certs
 )
 
+/*
+ *  TODO: Setup font for typography
+ */
+
 val fontName = GoogleFont("Lato")
 val fontFamily = FontFamily(
     Font(googleFont = fontName, fontProvider = provider),

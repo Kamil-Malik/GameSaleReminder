@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "970485977444",
+    "project_id": "gamesalereminder",
+    "storage_bucket": "gamesalereminder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970485977444:android:223037342c047c09e9aa71",
+        "android_client_info": {
+          "package_name": "com.lelestacia.gamediscountreminder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASREpfEK8aWMEh7VScNzTKw76CHrSsdYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,3 +13,10 @@ val Pink40 = Color(0xFF7D5260)
 val GreenSaleBackground = Color(0xFF54B435)
 val GreenSaleText = Color(0xFFF0FF42)
 val PriceBackground = Color(0xFF45474B)
+
+val GreenMetaCritic = Color(0xFF00ce7a)
+val YellowMetaCritic = Color(0xFFffbd3f)
+val RedMetaCritic = Color(0xFFff6874)
+
+val BaseBackgroundColor = Color(0xFF252B48)
+val CardBackgroundColor = Color(0xFF445069)

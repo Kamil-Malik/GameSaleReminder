@@ -1,6 +1,8 @@
 package com.lelestacia.gamediscountreminder.data.di
 
+import com.lelestacia.gamediscountreminder.BuildConfig
 import com.lelestacia.gamediscountreminder.data.source.remote.api.DealsEndpoint
+import com.lelestacia.gamediscountreminder.data.source.remote.api.StoresEndpoint
 import com.lelestacia.gamediscountreminder.util.Constant
 import dagger.Module
 import dagger.Provides
@@ -19,7 +21,13 @@ object RemoteModule {
     @Provides
     @Singleton
     fun provideInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS)
+        return HttpLoggingInterceptor().setLevel(
+            if (BuildConfig.DEBUG) {
+                HttpLoggingInterceptor.Level.BODY
+            } else {
+                HttpLoggingInterceptor.Level.NONE
+            }
+        )
     }
 
     @Provides
@@ -28,11 +36,13 @@ object RemoteModule {
         interceptor: HttpLoggingInterceptor
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constant.BASE_URL)
+            .baseUrl(Constant.BASE_URL_API)
             .addConverterFactory(MoshiConverterFactory.create())
             .client(
                 OkHttpClient()
                     .newBuilder()
+                    .followRedirects(true)
+                    .followSslRedirects(true)
                     .addInterceptor(interceptor)
                     .build()
             )
@@ -45,5 +55,13 @@ object RemoteModule {
         retrofit: Retrofit
     ): DealsEndpoint {
         return retrofit.create(DealsEndpoint::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideStoresEndpoint(
+        retrofit: Retrofit
+    ): StoresEndpoint {
+        return retrofit.create(StoresEndpoint::class.java)
     }
 }

@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class GameDealDto(
+data class DealDto(
 
     @Json(name = "dealID")
     val dealID: String,
@@ -44,16 +44,16 @@ data class GameDealDto(
     val savings: String,
 
     @Json(name = "steamAppID")
-    val steamAppID: String,
+    val steamAppID: String?,
 
     @Json(name = "steamRatingCount")
-    val steamRatingCount: String,
+    val steamRatingCount: String?,
 
     @Json(name = "steamRatingPercent")
-    val steamRatingPercent: String,
+    val steamRatingPercent: String?,
 
     @Json(name = "steamRatingText")
-    val steamRatingText: String,
+    val steamRatingText: String?,
 
     @Json(name = "storeID")
     val storeID: String,

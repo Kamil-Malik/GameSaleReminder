@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lelestacia.gamediscountreminder.domain.model.Price
-import com.lelestacia.gamediscountreminder.ui.theme.GameDiscountReminderTheme
+import com.lelestacia.gamediscountreminder.ui.theme.GameSaleReminderTheme
 import com.lelestacia.gamediscountreminder.ui.theme.GreenSaleBackground
 import com.lelestacia.gamediscountreminder.ui.theme.GreenSaleText
 import com.lelestacia.gamediscountreminder.ui.theme.PriceBackground
@@ -47,9 +47,8 @@ fun PriceCard(price: Price) {
                     text = "-${price.savings.toDouble().roundToInt()}%",
                     style = MaterialTheme.typography.titleLarge.copy(
                         fontWeight = FontWeight.Black,
-                        fontFamily = fontFamily,
                         color = GreenSaleText
-                    )
+                    ),
                 )
             }
             Column(
@@ -86,7 +85,7 @@ fun PriceCard(price: Price) {
 @Preview
 @Composable
 fun PreviewPriceCard() {
-    GameDiscountReminderTheme {
+    GameSaleReminderTheme {
         Surface {
             PriceCard(
                 price = Price(

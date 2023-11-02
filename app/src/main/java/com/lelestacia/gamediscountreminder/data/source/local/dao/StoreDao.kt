@@ -12,6 +12,9 @@ interface StoreDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStores(stores: List<StoreEntity>)
 
+    @Query("SELECT * FROM store")
+    suspend fun getAllStore(): List<StoreEntity>
+
     @Query("SELECT * FROM store WHERE store_id = :storeId")
     suspend fun getStoreByStoreId(storeId: String): StoreEntity?
 }
